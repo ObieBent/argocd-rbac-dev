@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+   labels:
+     app: web
+   name: php-hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - image: image-registry.openshift-image-registry.svc:5000/openshift/php-hello@sha256:51c1b79a3592dc00e0cc7b8d98cfb3e39b208dde18cd668d0d37b25a12b4d85a
+        name: php-hello
+        resources: {}
